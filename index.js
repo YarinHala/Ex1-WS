@@ -1,6 +1,6 @@
 var express         = require('express'),
     events          = require('events'),
-    url             = require('url')/*not-needed*/,
+    url             = require('url'),
     bodyParser      = require('body-parser'),
     TWS             = require('./ws/twitterService'),
     app             = express(),
