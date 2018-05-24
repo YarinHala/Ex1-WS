@@ -22,9 +22,6 @@ app.use('/news_date_pick',express.static(`${__dirname}/db`));
 
 
 
-app.get('/', (req, res) => {
-    res.sendFile(`${__dirname}/html/index.html`);
-});
 
 /****************************************************************/
 app.get('/news',(req,res) =>{
@@ -90,9 +87,22 @@ app.get('/news_date_pick/:newsID/:dateT',(req,res) =>{
           });
 });
 /****************************************************************/
-app.all('*',(req,res) =>{
-    res.send('Got lost? This is a friendly 404 page :) :)');
+
+
+app.all('*', (req, res, next) => {
+    console.log(`get.all *  middleware + ${req.path}`);
+    next();
+})
+
+
+app.get('/', (req, res) => {
+    res.sendFile(`${__dirname}/html/index.html`);
 });
+
+
+//app.all('*',(req,res) =>{
+//    res.send('Got lost? This is a friendly 404 page :) :)');
+//});
 
 
 app.listen(port,()=>{console.log(`listen on port ${port}`);});
