@@ -1,7 +1,7 @@
 var express         = require('express'),
     events          = require('events'),
     url             = require('url')/*not-needed*/,
-    bodyParser      = require('body-Parser'),
+    bodyParser      = require('body-parser'),
     TWS             = require('./ws/twitterService'),
     app             = express(),
     port            = process.env.PORT || 3000;
