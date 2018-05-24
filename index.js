@@ -14,7 +14,7 @@ app.set('ManageNewsInTwitter');
 /* bodyParser for json encode*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use('/assets', express.static(`${__dirname}/public`));
 /* Routs for Redirecting */
 //app.use('/news',express.static(`${__dirname}/db`));
 //app.use('/news_pick',express.static(`${__dirname}/db`));
