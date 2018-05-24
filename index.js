@@ -21,15 +21,7 @@ app.use('/assets', express.static(`${__dirname}/public`));
 //app.use('/news_date_pick',express.static(`${__dirname}/db`));
 
 
-app.all('*', (req, res, next) => {
-    console.log(`get.all *  middleware + ${req.path}`);
-    next();
-})
 
-
-app.get('/', (req, res) => {
-    res.sendFile(`${__dirname}/ui/index.html`);
-});
 
 
 /****************************************************************/
@@ -97,7 +89,15 @@ app.get('/news_date_pick/:newsID/:dateT',(req,res) =>{
 });
 /****************************************************************/
 
+app.all('*', (req, res, next) => {
+    console.log(`get.all * middleware + ${req.path}`);
+    next();
+})
 
+
+app.get('/', (req, res) => {
+    res.sendFile(`${__dirname}/ui/index.html`);
+});
 
 
 //app.all('*',(req,res) =>{
