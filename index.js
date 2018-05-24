@@ -16,11 +16,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 /* Routs for Redirecting */
-app.use('/news',express.static(`${__dirname}/db`));
-app.use('/news_pick',express.static(`${__dirname}/db`));
-app.use('/news_date_pick',express.static(`${__dirname}/db`));
+//app.use('/news',express.static(`${__dirname}/db`));
+//app.use('/news_pick',express.static(`${__dirname}/db`));
+//app.use('/news_date_pick',express.static(`${__dirname}/db`));
 
 
+app.all('*', (req, res, next) => {
+    console.log(`get.all *  middleware + ${req.path}`);
+    next();
+})
+
+
+app.get('/', (req, res) => {
+    res.sendFile(`${__dirname}/html/index.html`);
+});
 
 
 /****************************************************************/
@@ -89,15 +98,6 @@ app.get('/news_date_pick/:newsID/:dateT',(req,res) =>{
 /****************************************************************/
 
 
-app.all('*', (req, res, next) => {
-    console.log(`get.all *  middleware + ${req.path}`);
-    next();
-})
-
-
-app.get('/', (req, res) => {
-    res.sendFile(`${__dirname}/html/index.html`);
-});
 
 
 //app.all('*',(req,res) =>{
